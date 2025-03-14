@@ -15,7 +15,7 @@ http.interceptors.request.use(
         const access = localStorage.getItem('access')
 
         if(access){
-            config.headers.Authorization = `Bearer x${access}`
+            config.headers.Authorization = `Bearer ${access}`
         }
 
         return config
