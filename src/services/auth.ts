@@ -1,14 +1,9 @@
-import axios from "axios"
 import { useMutation } from "react-query"
-import { API_KEY, BASE_URL } from "../configs/envReader"
+import http from "../libs/axios"
 
 export const useLoginRequest = ()=> useMutation({
     mutationFn : async (data:{email : string , password : string})=>{
-        const response = await axios.post(BASE_URL+'/api/users/login',data,{
-            headers : {
-                "api_key" : API_KEY
-            }
-        })
+        const response = await http.post('/api/users/login',data)
 
         return response.data
     },
