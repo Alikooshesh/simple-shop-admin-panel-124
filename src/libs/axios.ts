@@ -28,7 +28,6 @@ http.interceptors.request.use(
 http.interceptors.response.use(
     (response) => response,
     (error)=>{
-        console.log(error)
         if(error.status === 403 || error.status === 401){
             localStorage.removeItem('access')
             location.replace('/')

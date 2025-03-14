@@ -1,4 +1,5 @@
 import { withPrivateRoute } from "../../App"
+import AddNewProduct from "../../components/page/products/addNewProduct"
 import ProductsTable from "../../components/page/products/table"
 import { useGetAllProducts } from "../../services/products"
 
@@ -11,9 +12,10 @@ const ProductsPage = ()=>{
     }
 
     return(
-        <>
+        <div className="p-2 flex flex-col gap-4">
             <ProductsTable productList={data.records}/>
-        </>
+            <AddNewProduct/>
+        </div>
     )
 }
 

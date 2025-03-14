@@ -7,7 +7,7 @@ interface Iprops {
 
 const ProductsTable = ({ productList }: Iprops) => {
 
-    const {mutate : deleteProduct} = useDeleteProduct()
+    const {mutate : deleteProduct , isLoading} = useDeleteProduct()
 
 
     return (
@@ -33,7 +33,7 @@ const ProductsTable = ({ productList }: Iprops) => {
                 </thead>
                 <tbody>
                     {productList.map(item=>(
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                        <tr key={`product-table-${item.id}`} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {item.title}
                         </th>
@@ -43,10 +43,12 @@ const ProductsTable = ({ productList }: Iprops) => {
                         <td className="px-6 py-4">
                             {item.price} T
                         </td>
-                        <td className="px-6 py-4 text-right flex items-center justify-end gap-4">
+                        {isLoading ? 'Loading ...' : 
+                            <td className="px-6 py-4 text-right flex items-center justify-end gap-4">
                             <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={()=> deleteProduct(item.id)}>Delete</button>
                         </td>
+                        }
                     </tr>
                     ))}
                     
