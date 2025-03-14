@@ -1,3 +1,5 @@
+import { withPrivateRoute } from "../../App"
+import ProductsTable from "../../components/page/products/table"
 import { useGetAllProducts } from "../../services/products"
 
 const ProductsPage = ()=>{
@@ -10,9 +12,9 @@ const ProductsPage = ()=>{
 
     return(
         <>
-            {data.records.map((item:any) => <p>{item.title}</p>)}
+            <ProductsTable productList={data.records}/>
         </>
     )
 }
 
-export default ProductsPage
+export default withPrivateRoute(ProductsPage)
